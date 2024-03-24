@@ -1,21 +1,36 @@
 {
   "name": "@onslip/karma-playwright-launcher",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "description": "Karma launcher plugin powered by playwright.",
   "repository": "github:Onslip/karma-playwright-launcher",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "karma start test/playwright_test.conf Chromium,ChromiumHeadless,Firefox,FirefoxHeadless,Webkit,WebkitHeadless",
+    "test-sequential": "karma start test/playwright_test.conf Chromium && karma start test/playwright_test.conf ChromiumHeadless && karma start test/playwright_test.conf Firefox && karma start test/playwright_test.conf FirefoxHeadless && karma start test/playwright_test.conf Webkit && karma start test/playwright_test.conf WebkitHeadless"
   },
   "keywords": [
-    "karma-plugin",
+    "headless",
+    "karma",
     "karma-launcher",
-    "playwright"
+    "karma-plugin",
+    "launcher",
+    "playwright",
+    "testing"
   ],
-  "author": "Joel Einbinder",
-  "contributors": [ "Martin Blom <martin.blom@onslip.com>" ],
+  "author": "Ivan Frolkin",
+  "contributors": [ "Martin Blom <martin.blom@onslip.com>", "Joel Einbinder <info@onslip.com>" ],
   "license": "MIT",
-  "dependencies": {
-    "playwright": "^1.0.0"
+  "devDependencies": {
+    "karma": "^6.4.2",
+    "karma-jasmine": "^5.1.0",
+    "playwright-core": "^1.42.1"
+  },
+  "peerDependenciesMeta": {
+    "playwright": {
+      "optional": true
+    },
+    "playwright-core": {
+      "optional": true
+    }
   }
 }

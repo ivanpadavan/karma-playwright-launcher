@@ -1,6 +1,8 @@
-# @onslip/karma-playwright-launcher
+# karma-playwright-launcher
 
-[![npm version](https://badge.fury.io/js/%40onslip%2Fkarma-playwright-launcher.svg)](https://badge.fury.io/js/%40onslip%2Fkarma-playwright-launcher)
+[![Build status: Playwright (MacOS)](https://github.com/ivanpadavan/karma-playwright-launcher/actions/workflows/playwright_macos_tests.yml/badge.svg)](https://github.com/ivanpadavan/karma-playwright-launcher/actions/workflows/playwright_macos_tests.yml)
+[![Build status: Playwright (Ubuntu)](https://github.com/ivanpadavan/karma-playwright-launcher/actions/workflows/playwright_ubuntu_tests.yml/badge.svg)](https://github.com/ivanpadavan/karma-playwright-launcher/actions/workflows/playwright_ubuntu_tests.yml)
+[![Build status: Playwright (Windows)](https://github.com/ivanpadavan/karma-playwright-launcher/actions/workflows/playwright_windows_tests.yml/badge.svg)](https://github.com/ivanpadavan/karma-playwright-launcher/actions/workflows/playwright_windows_tests.yml)
 
 Provides six browsers to [Karma](https://karma-runner.github.io/):
 
@@ -12,6 +14,38 @@ Provides six browsers to [Karma](https://karma-runner.github.io/):
 * `WebKitHeadless`
 
 Powered by [Playwright](https://github.com/microsoft/playwright).
+
+## Use Playwright capabilities within your test
+
+You may need to use Playwright capabilities right within sandboxed javascript code. 
+That can be achieved using [exposeBinding API](https://playwright.dev/docs/api/class-browsercontext#browser-context-expose-binding).
+
+You can pass callbacks that will be available within your tests by providing `bindings` object. 
+The one from example is accessable by default.
+
+In `karma.conf.js`:
+```js
+    ...
+    customLaunchers: {
+        WebkitClickablr: {
+            base: 'Webkit',
+            bindings: {
+                click: ({ frame }, selector) => frame.locator(selector).click()
+            }
+        }
+    },
+    ...
+```
+In spec file:
+```js
+...
+document.body.addEventListener('click', (event) => {
+    expect(event.isTrusted).toBeTruthy();
+    done();
+})
+click('body');
+...
+```
 
 ## Device emulation
 
@@ -25,7 +59,7 @@ You can control these settings by providing `device` and/or [`contextOptions`](h
     ...
     customLaunchers: {
         iPhone: {
-            base: 'WebKit',
+            base: 'Webkit',
             displayName: 'iPhone',
             device: 'iPhone 6',
             contextOptions: {
@@ -81,6 +115,10 @@ support this yet, but there is a [package](https://www.npmjs.com/package/npm-for
 See the [Playwright Release Notes](https://playwright.dev/versions/) for what browsers are bundled.
 
 ## History
+
+### 0.4.0
+
+* Ivan Frolkin: Add bindings and tests.
 
 ### 0.3.0
 
