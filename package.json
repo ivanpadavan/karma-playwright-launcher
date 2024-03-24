@@ -1,8 +1,8 @@
 {
   "name": "@ivanpadavan/karma-playwright-launcher",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "description": "Karma launcher plugin powered by playwright.",
-  "repository": "github:Onslip/karma-playwright-launcher",
+  "repository": "github:ivanpadavan/karma-playwright-launcher",
   "main": "index.js",
   "scripts": {
     "test": "karma start test/playwright_test.conf Chromium,ChromiumHeadless,Firefox,FirefoxHeadless,Webkit,WebkitHeadless",
