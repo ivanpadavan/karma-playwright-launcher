@@ -1,5 +1,5 @@
 {
-  "name": "@onslip/karma-playwright-launcher",
+  "name": "@ivanpadavan/karma-playwright-launcher",
   "version": "0.4.0",
   "description": "Karma launcher plugin powered by playwright.",
   "repository": "github:Onslip/karma-playwright-launcher",
