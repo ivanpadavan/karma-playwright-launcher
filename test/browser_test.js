@@ -46,11 +46,13 @@ describe("Karma Webkit Launcher", function () {
 
   it("Recieves trusted event", function (done) {
     document.body.style.height = '50px';
-    document.body.addEventListener('click', (event) => {
-      expect(event.isTrusted).toBeTruthy();
-      done();
+    requestAnimationFrame(() => {
+      document.body.addEventListener('click', (event) => {
+        expect(event.isTrusted).toBeTruthy();
+        done();
+      })
+      window.click('body');
     })
-    window.click('body');
   });
 
   it("Deferred callback after 1 sec", function () {
