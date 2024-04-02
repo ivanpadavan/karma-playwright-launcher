@@ -11,8 +11,8 @@ Provides six browsers to [Karma](https://karma-runner.github.io/):
 * `ChromiumHeadless`
 * `Firefox`
 * `FirefoxHeadless`
-* `WebKit`
-* `WebKitHeadless`
+* `Webkit`
+* `WebkitHeadless`
 
 Powered by [Playwright](https://github.com/microsoft/playwright).
 
@@ -97,7 +97,7 @@ configuration. The browsers must be downloaded and installed manually.
         'ChromiumHeadless',
         'EdgeHeadless',
         'FirefoxHeadless',
-        'WebKitHeadless',
+        'WebkitHeadless',
     ],
     ...
 ```
@@ -107,7 +107,7 @@ Valid values for the `channel` option are: `chrome`, `chrome-beta`, `chrome-dev`
 
 ## Older browsers
 
-Each Playwright release bundles specific versions of Chromium, Firefox and WebKit. If you use
+Each Playwright release bundles specific versions of Chromium, Firefox and Webkit. If you use
 [Yarn](https://classic.yarnpkg.com/en/docs/selective-version-resolutions/) or
 [pnpm](https://pnpm.io/package_json#pnpmoverrides), it's possible you may lock the version of the `playwright` package
 in order to force a specific version. [npm](https://github.com/npm/rfcs/blob/latest/accepted/0036-overrides.md) does not
